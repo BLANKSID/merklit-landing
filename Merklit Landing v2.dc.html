@@ -1271,6 +1271,521 @@
       background: linear-gradient(90deg, transparent, rgba(14,117,107,0.16), rgba(250,247,242,0.92), transparent);
       animation: proofSweep 0.48s steps(9) forwards;
     }
+    .integrity-section {
+      position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 120px 40px 34px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .integrity-watermark {
+      position: absolute;
+      top: 34px;
+      right: 24px;
+      color: rgba(14,117,107,0.08);
+      font-family: 'Silkscreen', monospace;
+      font-size: clamp(120px, 15vw, 240px);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .integrity-header {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 40px;
+      align-items: end;
+    }
+    .integrity-kicker {
+      color: #0E756B;
+      font-family: 'Silkscreen', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .integrity-title {
+      max-width: 940px;
+      margin: 17px 0 0;
+      font-family: 'Silkscreen', monospace;
+      font-size: clamp(25px, 2.9vw, 42px);
+      font-weight: 400;
+      line-height: 1.28;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+    .integrity-subhead {
+      max-width: 790px;
+      margin: 16px 0 0;
+      color: #5A5E65;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .integrity-boundary-badge {
+      padding: 15px 16px;
+      border: 1px solid rgba(176,68,44,0.45);
+      background: rgba(176,68,44,0.045);
+      color: #B0442C;
+      font-family: 'Silkscreen', monospace;
+      font-size: 9px;
+      line-height: 1.6;
+      letter-spacing: 0.055em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .integrity-console {
+      position: relative;
+      z-index: 2;
+      margin-top: 42px;
+      border: 1px solid #14161A;
+      background: #FFFFFF;
+      box-shadow: 9px 9px 0 rgba(14,117,107,0.82);
+    }
+    .integrity-console-bar {
+      display: grid;
+      grid-template-columns: auto minmax(120px, 260px) auto;
+      gap: 16px;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 16px;
+      background: #14161A;
+      color: rgba(250,247,242,0.62);
+      font-family: 'Silkscreen', monospace;
+      font-size: 8px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .integrity-chain-rail {
+      height: 3px;
+      overflow: hidden;
+      background: rgba(250,247,242,0.16);
+    }
+    #integrity-chain-fill {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #4FB3A8;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.35s steps(6);
+    }
+    .integrity-chain {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border-bottom: 1px solid #14161A;
+      background: #EEEBE5;
+    }
+    .integrity-step {
+      position: relative;
+      min-width: 0;
+      padding: 20px 13px 18px;
+      border-right: 1px solid rgba(20,22,26,0.16);
+      opacity: 0.28;
+      transform: translateY(9px);
+      transition: opacity 0.28s steps(4), transform 0.28s steps(4), background 0.28s steps(4);
+    }
+    .integrity-step:last-child { border-right: 0; }
+    .integrity-step.is-in { opacity: 1; transform: translateY(0); background: rgba(14,117,107,0.055); }
+    .integrity-step-code {
+      color: #0E756B;
+      font-family: 'Silkscreen', monospace;
+      font-size: 9px;
+    }
+    .integrity-step-title {
+      display: block;
+      margin-top: 10px;
+      color: #14161A;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+    .integrity-step-note {
+      display: block;
+      margin-top: 5px;
+      color: #6B6F76;
+      font-size: 7.5px;
+      line-height: 1.45;
+    }
+    .truth-boundary {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .truth-boundary::before {
+      content: '≠';
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      top: 50%;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #14161A;
+      background: #FAF7F2;
+      color: #B0442C;
+      font-family: 'Silkscreen', monospace;
+      font-size: 17px;
+      transform: translate(-50%, -50%);
+    }
+    .truth-panel {
+      padding: 30px 34px 32px;
+      box-sizing: border-box;
+    }
+    .truth-panel:first-child {
+      border-right: 1px solid #14161A;
+      background: rgba(14,117,107,0.035);
+    }
+    .truth-panel-label {
+      color: #0E756B;
+      font-family: 'Silkscreen', monospace;
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .truth-panel:last-child .truth-panel-label { color: #B0442C; }
+    .truth-list {
+      display: grid;
+      gap: 13px;
+      margin-top: 18px;
+    }
+    .truth-item {
+      position: relative;
+      margin: 0;
+      padding-left: 25px;
+      color: #3E4249;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+    .truth-item::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #0E756B;
+      content: '[+]';
+    }
+    .truth-panel:last-child .truth-item::before { color: #B0442C; content: '[x]'; }
+    .integrity-legal {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+      margin-top: 26px;
+      padding: 18px 20px;
+      border: 1px solid rgba(176,124,36,0.45);
+      background: rgba(176,124,36,0.055);
+    }
+    .integrity-legal strong {
+      color: #B07C24;
+      font-family: 'Silkscreen', monospace;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .integrity-legal p {
+      margin: 0;
+      color: #4A4E55;
+      font-size: 11.5px;
+      line-height: 1.65;
+    }
+    .integrity-guardrails {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .integrity-guardrail {
+      min-width: 0;
+      padding: 17px 16px 18px;
+      border-top: 4px solid #0E756B;
+      background: rgba(255,255,255,0.48);
+    }
+    .integrity-guardrail span {
+      color: #6B6F76;
+      font-family: 'Silkscreen', monospace;
+      font-size: 8px;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+    .integrity-guardrail p {
+      margin: 10px 0 0;
+      color: #2F3339;
+      font-size: 10.5px;
+      line-height: 1.6;
+    }
+    .page-foreground {
+      position: relative;
+      z-index: 2;
+      background: #FAF7F2;
+      box-shadow: 0 28px 48px rgba(20,22,26,0.24);
+    }
+    .page-foreground::after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 7px;
+      content: '';
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, #14161A 0 13%, #0E756B 13% 18%, #14161A 18% 82%, #0E756B 82% 87%, #14161A 87% 100%);
+    }
+    .curtain-pixels {
+      position: absolute;
+      z-index: 5;
+      left: 0;
+      right: 0;
+      bottom: -42px;
+      display: grid;
+      height: 84px;
+      grid-template-columns: repeat(var(--curtain-cols, 40), 1fr);
+      grid-template-rows: repeat(6, 14px);
+      pointer-events: none;
+    }
+    .curtain-pixel {
+      background: #FAF7F2;
+      opacity: 1;
+      transition: opacity 0.07s steps(2);
+      will-change: opacity;
+    }
+    .curtain-pixel.is-cut { background: #14161A; opacity: 0; }
+    .curtain-pixel.is-accent { background: #0E756B; }
+    .closing-stage {
+      position: sticky;
+      z-index: 1;
+      bottom: 0;
+      box-sizing: border-box;
+      overflow: hidden;
+      background: #14161A;
+    }
+    .closing-card {
+      position: relative;
+      display: flex;
+      min-height: 100svh;
+      flex-direction: column;
+      overflow: hidden;
+      background: #14161A;
+      color: #FAF7F2;
+    }
+    .closing-card::before {
+      position: absolute;
+      inset: 0;
+      content: '';
+      pointer-events: none;
+      opacity: 0.36;
+      background:
+        linear-gradient(rgba(79,179,168,0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,179,168,0.09) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(100deg, transparent 7%, #000 62%, #000 100%);
+    }
+    .closing-card::after {
+      position: absolute;
+      right: -104px;
+      top: -116px;
+      width: 310px;
+      height: 310px;
+      border: 1px solid rgba(79,179,168,0.25);
+      content: '';
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
+    .cta-section {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      width: 100%;
+      max-width: 1400px;
+      flex: 1;
+      align-items: center;
+      margin: 0 auto;
+      padding: clamp(70px, 10vh, 116px) clamp(44px, 6vw, 84px) clamp(58px, 8vh, 92px);
+      box-sizing: border-box;
+    }
+    .cta-panel {
+      position: relative;
+      display: grid;
+      width: 100%;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.72fr);
+      gap: clamp(44px, 7vw, 96px);
+      align-items: center;
+      margin: 0 auto;
+    }
+    .cta-copy, .pilot-card { position: relative; z-index: 2; }
+    .cta-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #4FB3A8;
+      font-family: 'Silkscreen', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .cta-kicker::before {
+      width: 7px;
+      height: 7px;
+      background: #4FB3A8;
+      box-shadow: 10px 0 0 rgba(79,179,168,0.38);
+      content: '';
+    }
+    .cta-title {
+      max-width: 720px;
+      margin: 20px 0 0;
+      font-family: 'Silkscreen', monospace;
+      font-size: clamp(29px, 3.65vw, 52px);
+      font-weight: 400;
+      line-height: 1.24;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+    .cta-title span { color: #4FB3A8; }
+    .cta-body {
+      max-width: 650px;
+      margin: 23px 0 0;
+      color: rgba(250,247,242,0.69);
+      font-size: 14px;
+      line-height: 1.75;
+      text-wrap: pretty;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+    .cta-primary, .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 25px;
+      box-sizing: border-box;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.065em;
+      text-transform: uppercase;
+      transition: color 0.18s steps(2), background 0.18s steps(2), border-color 0.18s steps(2);
+    }
+    .cta-primary {
+      border: 1px solid #4FB3A8;
+      background: #4FB3A8;
+      color: #14161A;
+      clip-path: polygon(0 7px, 7px 7px, 7px 0, calc(100% - 7px) 0, calc(100% - 7px) 7px, 100% 7px, 100% calc(100% - 7px), calc(100% - 7px) calc(100% - 7px), calc(100% - 7px) 100%, 7px 100%, 7px calc(100% - 7px), 0 calc(100% - 7px));
+    }
+    .cta-primary:hover { background: #FAF7F2; border-color: #FAF7F2; }
+    .cta-secondary { border: 1px solid rgba(250,247,242,0.44); color: #FAF7F2; }
+    .cta-secondary:hover { border-color: #FAF7F2; background: #FAF7F2; color: #14161A; }
+    .pilot-card {
+      border: 1px solid rgba(250,247,242,0.44);
+      background: rgba(20,22,26,0.88);
+      box-shadow: 7px 7px 0 rgba(79,179,168,0.34);
+    }
+    .pilot-card-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 38px;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(250,247,242,0.24);
+      color: rgba(250,247,242,0.58);
+      font-family: 'Silkscreen', monospace;
+      font-size: 7.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .pilot-card-status { display: inline-flex; align-items: center; gap: 7px; color: #4FB3A8; }
+    .pilot-card-status::before { width: 6px; height: 6px; background: #4FB3A8; content: ''; }
+    .pilot-card-body { padding: 9px 18px 17px; }
+    .pilot-row {
+      display: grid;
+      grid-template-columns: 98px minmax(0, 1fr);
+      gap: 15px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(250,247,242,0.13);
+    }
+    .pilot-row:last-child { border-bottom: 0; }
+    .pilot-row dt {
+      color: rgba(250,247,242,0.42);
+      font-family: 'Silkscreen', monospace;
+      font-size: 7.5px;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+    .pilot-row dd {
+      margin: 0;
+      color: #FAF7F2;
+      font-size: 10.5px;
+      line-height: 1.55;
+    }
+    .pilot-row dd strong { color: #4FB3A8; font-weight: 700; }
+    .pilot-readout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 5px 18px 18px;
+      padding: 11px 12px;
+      background: rgba(79,179,168,0.11);
+      color: rgba(250,247,242,0.66);
+      font-size: 8px;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+    .pilot-readout strong {
+      color: #4FB3A8;
+      font-family: 'Silkscreen', monospace;
+      font-size: 7px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    .site-footer {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: auto minmax(260px, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      width: 100%;
+      padding: 23px clamp(32px, 5vw, 72px);
+      border-top: 1px solid rgba(250,247,242,0.22);
+      box-sizing: border-box;
+    }
+    .site-footer-logo { display: inline-flex; align-items: center; }
+    .site-footer-logo img {
+      display: block;
+      height: 26px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .site-footer-note {
+      color: rgba(250,247,242,0.48);
+      font-size: 9px;
+      letter-spacing: 0.055em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .site-footer-meta {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-end;
+      color: rgba(250,247,242,0.5);
+      font-family: 'Silkscreen', monospace;
+      font-size: 8.5px;
+      white-space: nowrap;
+    }
+    .site-footer-meta a { color: #4FB3A8; transition: color 0.18s steps(2); }
+    .site-footer-meta a:hover { color: #FAF7F2; }
     @media (max-width: 960px) {
       .hero-shell { min-height: auto; padding: 116px 32px 54px; }
       .hero-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -1289,10 +1804,20 @@
       .proof-panel { grid-template-columns: minmax(180px, 0.72fr) minmax(0, 1.28fr); }
       .proof-decision-note { display: none; }
       .proof-output { grid-template-columns: auto 1fr; }
+      .integrity-header { grid-template-columns: 1fr; gap: 24px; }
+      .integrity-boundary-badge { max-width: 360px; }
+      .integrity-chain { grid-template-columns: repeat(3, 1fr); }
+      .integrity-step:nth-child(3n) { border-right: 0; }
+      .integrity-step:nth-child(-n+3) { border-bottom: 1px solid rgba(20,22,26,0.16); }
+      .integrity-guardrails { grid-template-columns: repeat(2, 1fr); }
       .pipeline-header { grid-template-columns: 1fr; gap: 24px; }
       .pipeline-hud { max-width: 420px; }
+      .flow-grid { grid-template-columns: 1fr; }
+      .flow-grid::before { left: 40px; right: auto; top: 5%; bottom: 5%; width: 2px; height: auto; }
+      .flow-card.is-active { transform: none; }
+      .flow-packet { display: none; }
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       #site-header { padding: 12px 20px !important; }
       #site-header nav { display: none !important; }
       #site-header > a:first-child img { height: 32px !important; }
@@ -1328,6 +1853,10 @@
       .hero-assurance-strip span,
       .hero-assurance-strip span:first-child { grid-column: auto; padding: 8px 10px; border-right: 0; border-bottom: 1px solid rgba(20,22,26,0.14); font-size: 7.5px; text-align: left; }
       .hero-assurance-strip span:last-child { border-bottom: 0; }
+      #proposition { padding: 96px 20px 82px !important; }
+      .proposition-grid { grid-template-columns: 1fr !important; margin-top: 44px !important; }
+      .proposition-card { padding: 28px 24px !important; border-right: 0 !important; border-bottom: 1px solid #14161A; }
+      .proposition-card:last-child { border-bottom: 0; }
       #flow { padding: 96px 20px 86px !important; }
       .flow-grid { grid-template-columns: 1fr; }
       .flow-grid::before { left: 40px; right: auto; top: 5%; bottom: 5%; width: 2px; height: auto; }
@@ -1384,6 +1913,44 @@
       .proof-output-label { font-size: 7px; }
       .proof-verdicts { gap: 5px; }
       .proof-verdict { padding: 4px 5px; font-size: 6.8px; }
+      .integrity-section { padding: 96px 20px 40px; }
+      .integrity-watermark { right: -6px; font-size: 112px; }
+      .integrity-kicker { font-size: 9px; }
+      .integrity-title { font-size: clamp(22px, 7vw, 29px); }
+      .integrity-subhead { font-size: 11.5px; }
+      .integrity-console { margin-top: 32px; box-shadow: 6px 6px 0 rgba(14,117,107,0.82); }
+      .integrity-console-bar { grid-template-columns: 1fr 110px; min-height: 34px; padding: 0 10px; font-size: 6.8px; }
+      .integrity-console-bar > span:last-child { display: none; }
+      .integrity-chain { grid-template-columns: repeat(2, 1fr); }
+      .integrity-step,
+      .integrity-step:nth-child(3n) { padding: 16px 12px; border-right: 1px solid rgba(20,22,26,0.16); border-bottom: 1px solid rgba(20,22,26,0.16); }
+      .integrity-step:nth-child(2n) { border-right: 0; }
+      .integrity-step:nth-last-child(-n+2) { border-bottom: 0; }
+      .truth-boundary { grid-template-columns: 1fr; }
+      .truth-boundary::before { display: none; }
+      .truth-panel { padding: 25px 22px 27px; }
+      .truth-panel:first-child { border-right: 0; border-bottom: 1px solid #14161A; }
+      .integrity-legal { grid-template-columns: 1fr; gap: 9px; padding: 16px; }
+      .integrity-guardrails { grid-template-columns: 1fr; gap: 10px; }
+      .page-foreground { box-shadow: 0 18px 32px rgba(20,22,26,0.2); }
+      .page-foreground::after { height: 5px; }
+      .curtain-pixels { display: none; }
+      .closing-stage { position: relative; bottom: auto; }
+      .closing-card { min-height: 100svh; }
+      .closing-card::before { background-size: 32px 32px; }
+      .cta-section { padding: 60px 34px 48px; }
+      .cta-panel { grid-template-columns: 1fr; gap: 40px; }
+      .cta-kicker { font-size: 8.5px; }
+      .cta-title { margin-top: 17px; font-size: clamp(25px, 7.9vw, 38px); }
+      .cta-body { margin-top: 19px; font-size: 12px; }
+      .cta-actions { align-items: stretch; margin-top: 28px; }
+      .cta-primary, .cta-secondary { min-height: 50px; padding: 0 18px; font-size: 9.5px; }
+      .pilot-card { box-shadow: 5px 5px 0 rgba(79,179,168,0.34); }
+      .pilot-row { grid-template-columns: 82px minmax(0, 1fr); gap: 10px; }
+      .pilot-readout { align-items: flex-start; flex-direction: column; }
+      .site-footer { grid-template-columns: 1fr; gap: 17px; padding: 24px 34px 28px; }
+      .site-footer-note { max-width: 470px; text-align: left; line-height: 1.6; }
+      .site-footer-meta { justify-content: space-between; }
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-kicker::before,
@@ -1393,6 +1960,8 @@
       .trace-step, .trace-signal, #trace-progress-fill { transition: none !important; }
       .flow-card, #flow-progress, .flow-packet { transition: none !important; }
       .flow-card.is-active .flow-status::before { animation: none !important; }
+      .integrity-step { opacity: 1 !important; transform: none !important; transition: none !important; }
+      #integrity-chain-fill { transition: none !important; }
       [data-prop-card] { opacity: 1 !important; transform: none !important; }
       [data-prop-bar] { transform: none !important; }
       .flow-card, .deploy-card { transform: none !important; }
@@ -1400,6 +1969,10 @@
       #problem-progress-fill { transform: scaleX(1) !important; }
       .proof-scan { display: none !important; }
       #proof-hud-fill { transition: none !important; }
+      .curtain-pixels { display: none !important; }
+    }
+    @media (max-width: 900px) and (min-height: 850px) {
+      .proof-sticky { justify-content: center; }
     }
   </style>
 </helmet>
@@ -1434,6 +2007,8 @@
 
 <main id="top" style="overflow-x: clip;">
 
+<div id="page-foreground" class="page-foreground">
+
 <section id="hero" class="hero-shell" data-screen-label="Hero">
   <div class="hero-grid">
     <div class="hero-copy">
@@ -1444,7 +2019,7 @@
         <span>We test whether</span>
         <span class="hero-accent">the evidence agrees.</span>
       </h1>
-      <p class="hero-lede" data-pixelreveal>Merklit tests each photo, person, vehicle, place and timestamp — then returns separate, auditable assertions for human review.</p>
+      <p class="hero-lede" data-pixelreveal>Merklit tests each photo, person, vehicle, place and timestamp, then returns separate, auditable assertions for human review.</p>
       <div class="hero-actions" data-pixelreveal>
         <a class="hero-primary" href="#cta">&gt; Start a shadow pilot</a>
         <a class="hero-secondary" href="#proof">See how evidence is tested <span aria-hidden="true">↓</span></a>
@@ -1499,35 +2074,35 @@
 <div data-screen-label="Ticker" style="border-top: 1px solid rgba(20,22,26,0.25); border-bottom: 1px solid rgba(20,22,26,0.25); overflow: hidden; padding: 14px 0; background: #FAF7F2; color: #14161A;">
   <div id="ticker" style="display: flex; width: max-content; will-change: transform;">
     <div style="display: flex; gap: 48px; padding-right: 48px; font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap;">
-      <span>camera-only capture</span><span style="color: #0E756B;">▓</span><span>hardware-backed signatures</span><span style="color: #0E756B;">▓</span><span>CCA trusted timestamps</span><span style="color: #0E756B;">▓</span><span>merkle-tree claim roots</span><span style="color: #0E756B;">▓</span><span>section 63 export workflow</span><span style="color: #0E756B;">▓</span><span>selective regional disclosure</span><span style="color: #0E756B;">▓</span>
+      <span>camera-only capture</span><span style="color: #0E756B;">▓</span><span>hardware-backed signatures where supported</span><span style="color: #0E756B;">▓</span><span>Indian licensed-CA timestamp workflow</span><span style="color: #0E756B;">▓</span><span>merkle-tree claim roots</span><span style="color: #0E756B;">▓</span><span>section 63 export workflow</span><span style="color: #0E756B;">▓</span><span>selective regional disclosure</span><span style="color: #0E756B;">▓</span>
     </div>
     <div style="display: flex; gap: 48px; padding-right: 48px; font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap;">
-      <span>camera-only capture</span><span style="color: #0E756B;">▓</span><span>hardware-backed signatures</span><span style="color: #0E756B;">▓</span><span>CCA trusted timestamps</span><span style="color: #0E756B;">▓</span><span>merkle-tree claim roots</span><span style="color: #0E756B;">▓</span><span>section 63 export workflow</span><span style="color: #0E756B;">▓</span><span>selective regional disclosure</span><span style="color: #0E756B;">▓</span>
+      <span>camera-only capture</span><span style="color: #0E756B;">▓</span><span>hardware-backed signatures where supported</span><span style="color: #0E756B;">▓</span><span>Indian licensed-CA timestamp workflow</span><span style="color: #0E756B;">▓</span><span>merkle-tree claim roots</span><span style="color: #0E756B;">▓</span><span>section 63 export workflow</span><span style="color: #0E756B;">▓</span><span>selective regional disclosure</span><span style="color: #0E756B;">▓</span>
     </div>
   </div>
 </div>
 
-<section id="proposition" data-screen-label="Proposition" style="max-width: 1400px; margin: 0 auto; padding: 130px 40px 110px; box-sizing: border-box; position: relative;">
+<section id="proposition" class="proposition-section" data-screen-label="Proposition" style="max-width: 1400px; margin: 0 auto; padding: 130px 40px 110px; box-sizing: border-box; position: relative;">
   <span data-parallax="-0.14" data-depth="0.04" style="position: absolute; top: 40px; right: 24px; font-family: 'Silkscreen', monospace; font-size: clamp(120px, 15vw, 240px); line-height: 1; color: rgba(14,117,107,0.09); pointer-events: none; user-select: none; z-index: 0;">01</span>
   <div style="max-width: 900px; position: relative; z-index: 2;">
     <span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.1em; color: #0E756B; text-transform: uppercase;">01 / the question</span>
     <h2 data-scramble style="font-family: 'Silkscreen', monospace; font-weight: 400; font-size: clamp(26px, 3.2vw, 46px); line-height: 1.3; margin: 20px 0 0; text-transform: uppercase;">Is the evidence consistent with the claim?</h2>
-    <p data-pixelreveal id="prop-copy" style="font-size: 16px; line-height: 1.75; color: #4A4E55; margin: 24px 0 0; max-width: 640px; text-wrap: pretty;">A phone alone doesn't prove an accident. Merklit proves individual facts — claimant, vehicle, place, time — and combines independent facts to support, contradict or qualify the incident narrative. Weak evidence routes to human review, never automatic rejection.</p>
+    <p data-pixelreveal id="prop-copy" style="font-size: 16px; line-height: 1.75; color: #4A4E55; margin: 24px 0 0; max-width: 640px; text-wrap: pretty;">A phone alone doesn't prove an accident. Merklit proves individual facts about the claimant, vehicle, place and time, then combines independent facts to support, contradict or qualify the incident narrative. Weak evidence routes to human review, never automatic rejection.</p>
   </div>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 64px; border: 1px solid #14161A; position: relative; z-index: 2;">
-    <div data-prop-card style="position: relative; padding: 36px 30px; border-right: 1px solid #14161A; transition: background 0.2s steps(2); opacity: 0; transform: translateY(18px);" style-hover="background: #FFFFFF;">
+  <div class="proposition-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 64px; border: 1px solid #14161A; position: relative; z-index: 2;">
+    <div data-prop-card class="proposition-card" style="position: relative; padding: 36px 30px; border-right: 1px solid #14161A; transition: background 0.2s steps(2); opacity: 0; transform: translateY(18px);" style-hover="background: #FFFFFF;">
       <span data-prop-bar style="position: absolute; left: 0; top: 0; height: 4px; width: 100%; background: #0E756B; transform: scaleX(0); transform-origin: left center;"></span>
       <span style="font-family: 'Silkscreen', monospace; font-size: 12px; color: #0E756B;">[01]</span>
       <h3 style="font-size: 18px; font-weight: 700; letter-spacing: 0.02em; margin: 16px 0 10px; text-transform: uppercase;">Reduce ambiguity</h3>
       <p style="font-size: 14.5px; line-height: 1.7; color: #4A4E55; margin: 0;">Separate verified observations from claimant statements and unavailable evidence.</p>
     </div>
-    <div data-prop-card style="position: relative; padding: 36px 30px; border-right: 1px solid #14161A; transition: background 0.2s steps(2); opacity: 0; transform: translateY(18px);" style-hover="background: #FFFFFF;">
+    <div data-prop-card class="proposition-card" style="position: relative; padding: 36px 30px; border-right: 1px solid #14161A; transition: background 0.2s steps(2); opacity: 0; transform: translateY(18px);" style-hover="background: #FFFFFF;">
       <span data-prop-bar style="position: absolute; left: 0; top: 0; height: 4px; width: 100%; background: #0E756B; transform: scaleX(0); transform-origin: left center;"></span>
       <span style="font-family: 'Silkscreen', monospace; font-size: 12px; color: #0E756B;">[02]</span>
       <h3 style="font-size: 18px; font-weight: 700; letter-spacing: 0.02em; margin: 16px 0 10px; text-transform: uppercase;">Strengthen provenance</h3>
       <p style="font-size: 14.5px; line-height: 1.7; color: #4A4E55; margin: 0;">Bind fresh media, time, location, actor and device evidence into one tamper-evident record.</p>
     </div>
-    <div data-prop-card style="position: relative; padding: 36px 30px; transition: background 0.2s steps(2); opacity: 0; transform: translateY(18px);" style-hover="background: #FFFFFF;">
+    <div data-prop-card class="proposition-card" style="position: relative; padding: 36px 30px; transition: background 0.2s steps(2); opacity: 0; transform: translateY(18px);" style-hover="background: #FFFFFF;">
       <span data-prop-bar style="position: absolute; left: 0; top: 0; height: 4px; width: 100%; background: #0E756B; transform: scaleX(0); transform-origin: left center;"></span>
       <span style="font-family: 'Silkscreen', monospace; font-size: 12px; color: #0E756B;">[03]</span>
       <h3 style="font-size: 18px; font-weight: 700; letter-spacing: 0.02em; margin: 16px 0 10px; text-transform: uppercase;">Support review</h3>
@@ -1541,7 +2116,7 @@
     <div class="problem-intro">
       <span class="problem-kicker">02 / proof of the problem</span>
       <h2 class="problem-title" data-scramble>This is not a hypothetical risk.</h2>
-      <p class="problem-lede">Recent Indian cases show alleged manipulation at multiple points in the claim chain — identity, records, vehicles, drivers, photographs and settlement workflows.</p>
+      <p class="problem-lede">Recent Indian cases show alleged manipulation at multiple points in the claim chain: identity, records, vehicles, drivers, photographs and settlement workflows.</p>
       <div class="problem-rail" aria-label="Case evidence index">
         <div class="problem-rail-row is-active" data-problem-dot><i></i><span>01</span><span>Sambhal network</span></div>
         <div class="problem-rail-row" data-problem-dot><i></i><span>02</span><span>Police records</span></div>
@@ -1625,9 +2200,9 @@
   <div class="proof-sticky">
     <div class="proof-header">
       <div>
-        <span class="proof-kicker">03 / proof model — scroll to step through</span>
+        <span class="proof-kicker">03 / proof model · scroll to step through</span>
         <h2 class="proof-heading" data-scramble>Five assertions. No black-box score.</h2>
-        <p class="proof-subhead">Each fact keeps its own evidence basis and verdict, so reviewers can see exactly what is supported — and what is not.</p>
+        <p class="proof-subhead">Each fact keeps its own evidence basis and verdict, so reviewers can see exactly what is supported, and what is not.</p>
       </div>
       <div class="proof-hud" aria-label="Proof model progress">
         <span class="proof-counter">{{ counter }}</span>
@@ -1676,7 +2251,7 @@
           <span class="proof-output-label">Possible output</span>
           <div class="proof-verdicts" aria-label="Possible assertion verdicts">
             <span class="proof-verdict" style="color: #0E756B;">[SUPPORTED]</span>
-            <span class="proof-verdict" style="color: #B07C24;">[PARTIAL]</span>
+            <span class="proof-verdict" style="color: #B07C24;">[PARTIALLY SUPPORTED]</span>
             <span class="proof-verdict" style="color: #B0442C;">[INCONSISTENT]</span>
             <span class="proof-verdict" style="color: #6B6F76;">[INSUFFICIENT]</span>
           </div>
@@ -1716,7 +2291,7 @@
         <div class="flow-icon">&gt;_</div>
         <span style="font-family: 'Silkscreen', monospace; font-size: 10px; color: #4FB3A8;">SESSION.KEY</span>
         <h3 style="font-size: 16px; font-weight: 700; margin: 14px 0 10px; text-transform: uppercase;">Initiate</h3>
-        <p style="font-size: 13px; line-height: 1.7; color: rgba(250,247,242,0.6); margin: 0;">Expiring capture session + one-time challenge — old evidence can't replay.</p>
+        <p style="font-size: 13px; line-height: 1.7; color: rgba(250,247,242,0.6); margin: 0;">Expiring capture session + one-time challenge, so old evidence can't replay.</p>
         <div class="flow-status">Challenge issued</div>
       </button>
       <button type="button" data-pixelreveal data-reveal-delay="160" data-flow-card class="pixel-panel flow-card" aria-label="Explore pipeline step 3: Capture" aria-pressed="false">
@@ -1724,7 +2299,7 @@
         <div class="flow-icon">[●]</div>
         <span style="font-family: 'Silkscreen', monospace; font-size: 10px; color: #4FB3A8;">CAPTURE.IO</span>
         <h3 style="font-size: 16px; font-weight: 700; margin: 14px 0 10px; text-transform: uppercase;">Capture</h3>
-        <p style="font-size: 13px; line-height: 1.7; color: rgba(250,247,242,0.6); margin: 0;">Identity, media, location, time and device evidence — hashed at capture.</p>
+        <p style="font-size: 13px; line-height: 1.7; color: rgba(250,247,242,0.6); margin: 0;">Identity, media, location, time and device evidence, hashed at capture.</p>
         <div class="flow-status">Evidence bound</div>
       </button>
       <button type="button" data-pixelreveal data-reveal-delay="240" data-flow-card class="pixel-panel flow-card" aria-label="Explore pipeline step 4: Verify" aria-pressed="false">
@@ -1744,7 +2319,7 @@
         <div class="flow-status">Review ready</div>
       </button>
     </div>
-    <p data-pixelreveal class="flow-note" style="margin: 40px 0 0; font-size: 13px; line-height: 1.8; color: rgba(250,247,242,0.65); border: 1px dashed rgba(79,179,168,0.5); padding: 18px 22px; max-width: 900px;"><span style="color: #4FB3A8; text-transform: uppercase; letter-spacing: 0.08em;">default_response &gt;</span> insurers learn whether the claimed region and evidence requirements were supported — never an unrestricted dump of personal location history.</p>
+    <p data-pixelreveal class="flow-note" style="margin: 40px 0 0; font-size: 13px; line-height: 1.8; color: rgba(250,247,242,0.65); border: 1px dashed rgba(79,179,168,0.5); padding: 18px 22px; max-width: 900px;"><span style="color: #4FB3A8; text-transform: uppercase; letter-spacing: 0.08em;">default_response &gt;</span> insurers learn whether the claimed region and evidence requirements were supported, never an unrestricted dump of personal location history.</p>
   </div>
 </section>
 
@@ -1764,8 +2339,8 @@
 <section id="channels" data-screen-label="Channels" data-bg="#14161A" style="background: #14161A; height: 320vh; position: relative;">
   <div style="position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
     <div style="width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 40px; box-sizing: border-box;">
-      <span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.1em; color: #4FB3A8; text-transform: uppercase;">05 / deployment — keep scrolling &gt;&gt;</span>
-      <h2 data-scramble style="font-family: 'Silkscreen', monospace; font-weight: 400; font-size: clamp(24px, 2.8vw, 40px); line-height: 1.3; margin: 18px 0 0; color: #FAF7F2; text-transform: uppercase;">One platform. Every assurance level.</h2>
+      <span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.1em; color: #4FB3A8; text-transform: uppercase;">05 / deployment</span>
+      <h2 data-scramble style="font-family: 'Silkscreen', monospace; font-weight: 400; font-size: clamp(24px, 2.8vw, 40px); line-height: 1.3; margin: 18px 0 0; color: #FAF7F2; text-transform: uppercase;">One platform. Multiple assurance levels.</h2>
       <div class="deploy-hud">
         <span id="deploy-count">01 / 06</span>
         <div class="deploy-rail"><span id="deploy-progress"></span></div>
@@ -1787,7 +2362,7 @@
         <div class="deploy-body">
         <div class="deploy-glyph">[▣]</div>
         <h3 style="font-size: 17px; font-weight: 700; color: #FAF7F2; margin: 14px 0 10px; text-transform: uppercase;">Branded claim site</h3>
-        <p style="font-size: 13px; line-height: 1.7; color: rgba(250,247,242,0.6); margin: 0;">A managed claim journey — guided capture, document upload, full insurer branding.</p>
+        <p style="font-size: 13px; line-height: 1.7; color: rgba(250,247,242,0.6); margin: 0;">A managed claim journey with guided capture, document upload and full insurer branding.</p>
         <div class="assurance" aria-label="Assurance level 2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
         </div>
       </div>
@@ -1832,67 +2407,101 @@
 </section>
 
 <div data-curtain="out" style="height: 38vh; background: #14161A; position: relative; overflow: hidden; margin-top: -1px;"></div>
-<section id="integrity" data-screen-label="Integrity" style="max-width: 1400px; margin: 0 auto; padding: 130px 40px; box-sizing: border-box; position: relative;">
-  <span data-parallax="-0.08" style="position: absolute; top: 40px; right: 24px; font-family: 'Silkscreen', monospace; font-size: clamp(120px, 15vw, 240px); line-height: 1; color: rgba(14,117,107,0.09); pointer-events: none; user-select: none;">06</span>
-  <span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.1em; color: #0E756B; text-transform: uppercase;">06 / integrity, correctly framed</span>
-  <h2 data-scramble style="font-family: 'Silkscreen', monospace; font-weight: 400; font-size: clamp(24px, 2.8vw, 40px); line-height: 1.3; margin: 18px 0 0; text-transform: uppercase; max-width: 900px;">Tamper-evident by design. Honest about what that means.</h2>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 60px; border: 1px solid #14161A;">
-    <div data-pixelreveal style="padding: 38px 34px; border-right: 1px solid #14161A; background: #FFFFFF;">
-      <span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #0E756B;">THE_PROOF_LAYER_GUARANTEES</span>
-      <div style="display: grid; gap: 16px; margin-top: 24px;">
-        <p style="font-size: 14.5px; line-height: 1.7; margin: 0;"><span style="color: #0E756B;">[+]</span> The exact evidence commitment existed by a recorded block.</p>
-        <p style="font-size: 14.5px; line-height: 1.7; margin: 0;"><span style="color: #0E756B;">[+]</span> A later change would produce a different hash.</p>
-        <p style="font-size: 14.5px; line-height: 1.7; margin: 0;"><span style="color: #0E756B;">[+]</span> The public anchor can be checked independently of Merklit.</p>
-      </div>
+<section id="integrity" class="integrity-section" data-screen-label="Integrity">
+  <span class="integrity-watermark" data-parallax="-0.08">06</span>
+  <div class="integrity-header">
+    <div>
+      <span class="integrity-kicker">06 / integrity and legal boundary</span>
+      <h2 class="integrity-title" data-scramble>Tamper evidence, correctly framed.</h2>
+      <p class="integrity-subhead">The integrity layer proves what was committed, when it existed and whether it changed. It does not turn a device, sensor or blockchain into a truth oracle.</p>
     </div>
-    <div data-pixelreveal data-reveal-delay="120" style="padding: 38px 34px;">
-      <span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6B6F76;">IT_NEVER_CLAIMS</span>
-      <div style="display: grid; gap: 16px; margin-top: 24px;">
-        <p style="font-size: 14.5px; line-height: 1.7; color: #4A4E55; margin: 0;"><span style="color: #B0442C;">[x]</span> That GPS or a sensor input was truthful.</p>
-        <p style="font-size: 14.5px; line-height: 1.7; color: #4A4E55; margin: 0;"><span style="color: #B0442C;">[x]</span> That the claimant personally held the device.</p>
-        <p style="font-size: 14.5px; line-height: 1.7; color: #4A4E55; margin: 0;"><span style="color: #B0442C;">[x]</span> That an accident occurred merely because a hash exists.</p>
+    <div class="integrity-boundary-badge">[ Not a truth oracle ]<br>Evidence quality remains explicit</div>
+  </div>
+
+  <div class="integrity-console" data-pixelreveal>
+    <div class="integrity-console-bar">
+      <span>Recommended integrity sequence</span>
+      <div class="integrity-chain-rail" aria-hidden="true"><span id="integrity-chain-fill"></span></div>
+      <span>06 controlled steps</span>
+    </div>
+    <div class="integrity-chain" aria-label="Six-step integrity sequence">
+      <div class="integrity-step" data-integrity-step><span class="integrity-step-code">01</span><strong class="integrity-step-title">Hash at capture</strong><span class="integrity-step-note">Bind components to the fresh claim session.</span></div>
+      <div class="integrity-step" data-integrity-step><span class="integrity-step-code">02</span><strong class="integrity-step-title">Sign manifest</strong><span class="integrity-step-note">Hardware-backed where supported, service key otherwise.</span></div>
+      <div class="integrity-step" data-integrity-step><span class="integrity-step-code">03</span><strong class="integrity-step-title">Create claim root</strong><span class="integrity-step-note">Combine evidence-item roots into one commitment.</span></div>
+      <div class="integrity-step" data-integrity-step><span class="integrity-step-code">04</span><strong class="integrity-step-title">Licensed-CA time</strong><span class="integrity-step-note">Obtain an Indian trusted timestamp.</span></div>
+      <div class="integrity-step" data-integrity-step><span class="integrity-step-code">05</span><strong class="integrity-step-title">Publish batch root</strong><span class="integrity-step-note">Send only the tenant-safe batch root to Base.</span></div>
+      <div class="integrity-step" data-integrity-step><span class="integrity-step-code">06</span><strong class="integrity-step-title">Preserve verifier</strong><span class="integrity-step-note">Keep receipt, inclusion path, versions and status.</span></div>
+    </div>
+    <div class="truth-boundary">
+      <div class="truth-panel">
+        <span class="truth-panel-label">The proof establishes</span>
+        <div class="truth-list">
+          <p class="truth-item">The exact evidence commitment existed by a recorded block.</p>
+          <p class="truth-item">A later change would produce a different hash.</p>
+          <p class="truth-item">The public anchor can be checked independently of Merklit.</p>
+        </div>
+      </div>
+      <div class="truth-panel">
+        <span class="truth-panel-label">The proof never establishes</span>
+        <div class="truth-list">
+          <p class="truth-item">That GPS or another sensor input was truthful.</p>
+          <p class="truth-item">That the claimant personally held the device.</p>
+          <p class="truth-item">That an accident occurred merely because a hash exists.</p>
+        </div>
       </div>
     </div>
   </div>
-  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px;">
-    <div data-pixelreveal style="border-top: 4px solid #0E756B; padding-top: 16px;">
-      <span style="font-family: 'Silkscreen', monospace; font-size: 10.5px; color: #6B6F76;">ENCRYPTION</span>
-      <p style="font-size: 13.5px; line-height: 1.65; margin: 10px 0 0; font-weight: 500;">AES-256-GCM per evidence object, tenant KMS keys, optional BYOK.</p>
-    </div>
-    <div data-pixelreveal data-reveal-delay="60" style="border-top: 4px solid #0E756B; padding-top: 16px;">
-      <span style="font-family: 'Silkscreen', monospace; font-size: 10.5px; color: #6B6F76;">ON-CHAIN_POLICY</span>
-      <p style="font-size: 13.5px; line-height: 1.65; margin: 10px 0 0; font-weight: 500;">PII, raw media and coordinates never enter the blockchain.</p>
-    </div>
-    <div data-pixelreveal data-reveal-delay="120" style="border-top: 4px solid #0E756B; padding-top: 16px;">
-      <span style="font-family: 'Silkscreen', monospace; font-size: 10.5px; color: #6B6F76;">DISCLOSURE</span>
-      <p style="font-size: 13.5px; line-height: 1.65; margin: 10px 0 0; font-weight: 500;">Regional results by default; full reports require audited escalation.</p>
-    </div>
-    <div data-pixelreveal data-reveal-delay="180" style="border-top: 4px solid #0E756B; padding-top: 16px;">
-      <span style="font-family: 'Silkscreen', monospace; font-size: 10.5px; color: #6B6F76;">LEGAL_PACKAGE</span>
-      <p style="font-size: 13.5px; line-height: 1.65; margin: 10px 0 0; font-weight: 500;">CCA timestamps, Base anchoring and a Section 63 certificate workflow.</p>
-    </div>
+
+  <div class="integrity-legal" data-pixelreveal>
+    <strong>[ Legal boundary ]</strong>
+    <p>The export is a court-supporting electronic evidence package, not guaranteed admissibility. Admissibility and evidentiary weight remain subject to proper procedure, case facts and legal review.</p>
+  </div>
+
+  <div class="integrity-guardrails">
+    <div class="integrity-guardrail" data-pixelreveal><span>Encryption</span><p>AES-256-GCM per evidence object, tenant-specific KMS keys and optional BYOK.</p></div>
+    <div class="integrity-guardrail" data-pixelreveal data-reveal-delay="60"><span>On-chain policy</span><p>PII, raw media, policy numbers and coordinates never enter the blockchain.</p></div>
+    <div class="integrity-guardrail" data-pixelreveal data-reveal-delay="120"><span>Disclosure</span><p>Regional results by default. Exact location and full reports require an audited escalation.</p></div>
+    <div class="integrity-guardrail" data-pixelreveal data-reveal-delay="180"><span>Legal package</span><p>Manifest, signatures, licensed-CA time, inclusion proof, audit trail and a configurable Section 63 workflow.</p></div>
   </div>
 </section>
 
-<section id="cta" data-screen-label="CTA" style="padding: 40px 40px 130px; text-align: center; position: relative; overflow: hidden;">
-  <div data-sprite="seal" data-depth="0.06" data-parallax="0.12" data-cell="8" style="position: absolute; top: 8%; left: 3%; pointer-events: none; opacity: 0.4; z-index: 0;"></div>
-  <div data-sprite="pin" data-depth="0.05" data-parallax="-0.1" data-cell="8" style="position: absolute; bottom: 6%; right: 3.5%; pointer-events: none; opacity: 0.5; z-index: 0;"></div>
-  <div style="max-width: 940px; margin: 0 auto; position: relative;">
-    <span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.1em; color: #0E756B; text-transform: uppercase;">07 / start with motor claims</span>
-    <h2 data-scramble style="font-family: 'Silkscreen', monospace; font-weight: 400; font-size: clamp(30px, 4.2vw, 62px); line-height: 1.25; margin: 22px 0 0; text-transform: uppercase; text-wrap: pretty;">Claim decisions you can <span style="color: #0E756B;">defend.</span></h2>
-    <p data-pixelreveal style="font-size: 15.5px; line-height: 1.8; color: #4A4E55; max-width: 620px; margin: 26px auto 0; text-wrap: pretty;">Run a shadow pilot on 500–2,000 motor claims without affecting claim approval. Measure cycle time, contradiction yield and review effort before you commit.</p>
-    <div style="display: flex; gap: 14px; justify-content: center; margin-top: 42px; flex-wrap: wrap;">
-      <a href="mailto:pilots@merklit.example" style="display: inline-block; background: #0E756B; color: #FAF7F2; font-size: 14.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 18px 38px; clip-path: polygon(0 8px, 8px 8px, 8px 0, calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)); transition: background 0.2s steps(2);" style-hover="background: #14161A; color: #FAF7F2;">&gt; Request a pilot</a>
-      <a href="mailto:hello@merklit.example" style="display: inline-block; color: #14161A; font-size: 14.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 17px 38px; border: 1px solid #14161A; transition: background 0.2s steps(2);" style-hover="background: #14161A; color: #FAF7F2;">Talk to us</a>
-    </div>
-  </div>
-</section>
+<div id="curtain-pixels" class="curtain-pixels" aria-hidden="true"></div>
 
-<footer data-screen-label="Footer" style="border-top: 1px solid #14161A; padding: 32px 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; max-width: 1400px; margin: 0 auto; box-sizing: border-box;">
-  <img src="assets/logo.png" alt="merklit" style="height: 28px; display: block; mix-blend-mode: multiply;">
-  <span style="font-size: 11.5px; color: #6B6F76; letter-spacing: 0.04em; text-transform: uppercase;">location-bound incident evidence · merklit recommends review; the insurer decides.</span>
-  <span style="font-family: 'Silkscreen', monospace; font-size: 10.5px; color: #6B6F76;">© 2026 MERKLIT</span>
-</footer>
+</div>
+
+<div id="closing-stage" class="closing-stage">
+  <div id="closing-card" class="closing-card">
+    <section id="cta" class="cta-section" data-screen-label="CTA">
+      <div class="cta-panel">
+        <div class="cta-copy">
+          <span class="cta-kicker">07 / measurable pilot</span>
+          <h2 class="cta-title" data-pixelreveal>Prove the value before changing a <span>claim decision.</span></h2>
+          <p class="cta-body" data-pixelreveal>Run a shadow pilot on 500–2,000 motor claims without changing approval decisions. Compare cycle time, recapture, contradiction yield and review effort against your current process.</p>
+          <div class="cta-actions" data-pixelreveal data-reveal-delay="80">
+            <a class="cta-primary" href="mailto:info@merklit.com?subject=Merklit%20shadow%20pilot" aria-label="Request a Merklit shadow pilot">&gt; Request a pilot</a>
+            <a class="cta-secondary" href="mailto:info@merklit.com?subject=Merklit%20conversation">Email us</a>
+          </div>
+        </div>
+        <aside class="pilot-card" data-pixelreveal data-reveal-delay="130" aria-label="Shadow pilot protocol">
+          <div class="pilot-card-bar"><span>Pilot_protocol</span><span class="pilot-card-status">No decision impact</span></div>
+          <dl class="pilot-card-body">
+            <div class="pilot-row"><dt>Scope</dt><dd>One motor claim type and one operating region</dd></div>
+            <div class="pilot-row"><dt>Volume</dt><dd><strong>500–2,000</strong> historical or live-shadow claims</dd></div>
+            <div class="pilot-row"><dt>Measures</dt><dd>Cycle time, recapture, contradiction yield and review effort</dd></div>
+            <div class="pilot-row"><dt>Output</dt><dd>Baseline comparison, evidence gaps and a scale recommendation</dd></div>
+          </dl>
+          <div class="pilot-readout"><span>Your current claim process stays in control.</span><strong>[SHADOW MODE]</strong></div>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="site-footer" data-screen-label="Footer">
+      <a class="site-footer-logo" href="#top" aria-label="Back to top"><img src="assets/logo.png" alt="merklit"></a>
+      <span class="site-footer-note">Location-bound incident evidence · Merklit recommends review; the insurer decides.</span>
+      <span class="site-footer-meta"><a href="mailto:info@merklit.com">info@merklit.com</a><span>© 2026 MERKLIT</span></span>
+    </footer>
+  </div>
+</div>
 
 </main>
 </x-dc>
@@ -1904,11 +2513,11 @@
 class Component extends DCLogic {
   state = { idx: 0 };
   A = [
-    { code: 'A-01', group: 'Actor / presence', title: 'Policyholder presence', desc: "The authenticated policyholder's enrolled device produced acceptable evidence from the claimed region and time.", src: 'OTP · device binding · location predicate · attestation' },
-    { code: 'A-02', group: 'Media / freshness', title: 'Media captured here', desc: 'A photo or video was freshly captured inside the controlled workflow at the reported location and remained unchanged.', src: 'camera-only capture · content hash · signed manifest' },
-    { code: 'A-03', group: 'Field / visit', title: 'Surveyor visited', desc: 'The assigned, authenticated field representative produced visit evidence at the vehicle or property.', src: 'roster identity · arrival proof · guided inspection' },
-    { code: 'A-04', group: 'Vehicle / event', title: 'Vehicle event', desc: 'A vehicle-linked source reported a collision-like event at a particular time and location.', src: 'OEM · fleet · OBD · telematics correlated to VIN' },
-    { code: 'A-05', group: 'Incident / consistency', title: 'Incident corroborated', desc: 'Independent evidence sources are mutually consistent with the submitted incident account.', src: 'presence · fresh media · vehicle event · external records' }
+    { code: 'A-01', group: 'Actor / presence', title: 'Policyholder presence', desc: "The authenticated policyholder's enrolled device produced acceptable evidence from the claimed region and time.", src: 'OTP · device binding · location predicate · server challenge · attestation' },
+    { code: 'A-02', group: 'Media / freshness', title: 'Media captured here', desc: 'A photo or video was freshly captured inside the controlled workflow at the reported location and remained unchanged.', src: 'camera-only capture · location · time · content hash · signed manifest' },
+    { code: 'A-03', group: 'Field / visit', title: 'Surveyor visited', desc: 'The assigned, authenticated field representative produced visit evidence at the vehicle or property.', src: 'roster identity · assignment · arrival proof · guided inspection · departure' },
+    { code: 'A-04', group: 'Vehicle / event', title: 'Vehicle event', desc: 'A vehicle-linked source reported a collision-like event at a particular time and location.', src: 'OEM · fleet · OBD · telematics correlated to policy or VIN' },
+    { code: 'A-05', group: 'Incident / consistency', title: 'Incident corroborated', desc: 'Independent evidence sources are mutually consistent with the submitted incident account.', src: 'presence · fresh media · vehicle event · surveyor evidence · external records' }
   ];
   componentDidMount() {
     if (!(this.props.scanlines ?? true)) {
@@ -1917,13 +2526,16 @@ class Component extends DCLogic {
       if (g) g.style.display = 'none';
     }
     this._initLenis();
+    this._initCtaAnchors();
     this._initCursor();
     this._initReveals();
     this._initScramble();
     this._initPinned();
     this._initFx();
+    this._initCurtainPixels();
     this._initHeroTrace();
     this._initFlowUX();
+    this._initIntegrityUX();
     this._runLoader();
     this._raf = (t) => {
       if (this._lenis) this._lenis.raf(t);
@@ -1935,10 +2547,32 @@ class Component extends DCLogic {
     };
     this._rafId = requestAnimationFrame(this._raf);
   }
+  _initCtaAnchors() {
+    this._ctaAnchors = Array.from(document.querySelectorAll('a[href="#cta"]'));
+    this._onCtaAnchor = (event) => {
+      event.preventDefault();
+      const foreground = document.getElementById('page-foreground');
+      if (!foreground) return;
+      const target = foreground.offsetHeight;
+      if (this._lenis) this._lenis.scrollTo(target, { duration: 1.25 });
+      else window.scrollTo({ top: target, behavior: 'smooth' });
+      if (window.history && window.history.replaceState) window.history.replaceState(null, '', '#cta');
+    };
+    this._ctaAnchors.forEach((anchor) => anchor.addEventListener('click', this._onCtaAnchor));
+    if (window.location.hash === '#cta') this._ctaHashTimer = setTimeout(() => this._onCtaAnchor({ preventDefault() {} }), 2050);
+  }
   _initLenis() {
     if (!(this.props.smoothScroll ?? true)) return;
     const tryInit = () => {
-      if (window.Lenis && !this._lenis) this._lenis = new window.Lenis({ lerp: 0.08, smoothWheel: true, anchors: { offset: -70 } });
+      if (window.Lenis && !this._lenis) this._lenis = new window.Lenis({
+        duration: 1.05,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 0.9,
+        touchMultiplier: 1,
+        syncTouch: false,
+        anchors: { offset: -70 }
+      });
       else if (!window.Lenis) this._retry = setTimeout(tryInit, 150);
     };
     tryInit();
@@ -2041,7 +2675,7 @@ class Component extends DCLogic {
       });
       if (count) count.textContent = '[' + String(idx + 1).padStart(2, '0') + '/05]';
       if (progress) progress.style.transform = 'scaleX(' + ((idx + 1) / this._flowCards.length) + ')';
-      if (packet && window.innerWidth > 700) requestAnimationFrame(() => {
+      if (packet && window.innerWidth > 960) requestAnimationFrame(() => {
         const node = this._flowCards[idx].querySelector('.flow-node');
         const gridRect = packet.parentElement.getBoundingClientRect();
         const nodeRect = node.getBoundingClientRect();
@@ -2064,7 +2698,7 @@ class Component extends DCLogic {
     }
     const flow = document.getElementById('flow');
     if (!flow) return;
-    if (window.innerWidth <= 700) {
+    if (window.innerWidth <= 960) {
       this._flowCardObserver = new IntersectionObserver((entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
         let active = 0, nearest = Infinity;
@@ -2086,6 +2720,30 @@ class Component extends DCLogic {
       }, { threshold: 0.28 });
       this._flowObserver.observe(flow);
     }
+  }
+  _initIntegrityUX() {
+    this._integritySteps = Array.from(document.querySelectorAll('[data-integrity-step]'));
+    this._integrityTimers = [];
+    const fill = document.getElementById('integrity-chain-fill');
+    const reveal = (idx) => {
+      this._integritySteps[idx].classList.add('is-in');
+      if (fill) fill.style.transform = 'scaleX(' + ((idx + 1) / this._integritySteps.length) + ')';
+    };
+    if (!this._integritySteps.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this._integritySteps.forEach((step, i) => reveal(i));
+      return;
+    }
+    const section = document.getElementById('integrity');
+    if (!section) return;
+    this._integrityObserver = new IntersectionObserver((entries) => {
+      if (this._integrityPlayed || !entries.some((entry) => entry.isIntersecting)) return;
+      this._integrityPlayed = true;
+      this._integritySteps.forEach((step, i) => {
+        this._integrityTimers.push(setTimeout(() => reveal(i), 420 + i * 150));
+      });
+    }, { threshold: 0.16 });
+    this._integrityObserver.observe(section);
   }
   _initReveals() {
     this._pending = [];
@@ -2265,12 +2923,51 @@ class Component extends DCLogic {
       this._heroGlitch = { blocks, p: -1 };
     }, 5200);
   }
+  _initCurtainPixels() {
+    const edge = document.getElementById('curtain-pixels');
+    if (!edge) return;
+    const cols = 40, rows = 6;
+    edge.replaceChildren();
+    edge.style.setProperty('--curtain-cols', String(cols));
+    this._curtainPixels = [];
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const node = document.createElement('i');
+        const cut = row < 3;
+        const noise = ((col * 17 + row * 29 + col * row * 7) % 37) / 36;
+        const base = cut
+          ? [0.40, 0.24, 0.09][row]
+          : [0.40, 0.23, 0.07][row - 3];
+        const fillActive = cut || ((col * 13 + row * 11) % 10 < (row === 3 ? 6 : 4));
+        const threshold = fillActive ? base + noise * (cut ? 0.28 : 0.25) : -1;
+        node.className = 'curtain-pixel ' + (cut ? 'is-cut' : 'is-fill');
+        if (!cut && (col * 3 + row * 5) % 17 === 0) node.classList.add('is-accent');
+        edge.appendChild(node);
+        this._curtainPixels.push({ node, cut, threshold });
+      }
+    }
+    this._curtainPixelProgress = -1;
+  }
   _tickScrollFx() {
     const vh = window.innerHeight;
     const now = performance.now();
     const vw = window.innerWidth;
     const nx = this._tx > -50 ? (this._tx / vw - 0.5) : 0;
     const ny = this._ty > -50 ? (this._ty / vh - 0.5) : 0;
+    if (this._curtainPixels && vw > 900) {
+      const foreground = document.getElementById('page-foreground');
+      if (foreground) {
+        const raw = Math.min(1, Math.max(0, (vh - foreground.getBoundingClientRect().bottom) / vh));
+        const progress = Math.round(raw * 28) / 28;
+        if (progress !== this._curtainPixelProgress) {
+          this._curtainPixelProgress = progress;
+          this._curtainPixels.forEach((pixel) => {
+            const visible = pixel.cut ? progress >= pixel.threshold : progress < pixel.threshold;
+            pixel.node.style.opacity = visible ? '1' : '0';
+          });
+        }
+      }
+    }
     if (this._plx) this._plx.forEach((el, i) => {
       const sp = parseFloat(el.getAttribute('data-parallax')) || 0;
       const dp = parseFloat(el.getAttribute('data-depth')) || 0;
@@ -2361,7 +3058,7 @@ class Component extends DCLogic {
       cards.forEach((c) => c.classList.add('is-in'));
       return;
     }
-    // Phrase highlight — fires once after the body copy enters view.
+    // Phrase highlight: fires once after the body copy enters view.
     if (copy && !copy.dataset.hlReady) {
       const src = copy.textContent;
       const phrases = ['claimant, vehicle, place, time', 'support, contradict or qualify', 'human review'];
@@ -2443,10 +3140,14 @@ class Component extends DCLogic {
     if (this._lenis) this._lenis.destroy();
     if (this._rafId) cancelAnimationFrame(this._rafId);
     if (this._retry) clearTimeout(this._retry);
+    if (this._ctaHashTimer) clearTimeout(this._ctaHashTimer);
     if (this._traceTimers) this._traceTimers.forEach((timer) => clearTimeout(timer));
     if (this._flowTimers) this._flowTimers.forEach((timer) => clearTimeout(timer));
+    if (this._integrityTimers) this._integrityTimers.forEach((timer) => clearTimeout(timer));
     if (this._flowObserver) this._flowObserver.disconnect();
     if (this._flowCardObserver) this._flowCardObserver.disconnect();
+    if (this._integrityObserver) this._integrityObserver.disconnect();
+    if (this._ctaAnchors && this._onCtaAnchor) this._ctaAnchors.forEach((anchor) => anchor.removeEventListener('click', this._onCtaAnchor));
     if (this._flowListeners) this._flowListeners.forEach(({ card, handler }) => {
       card.removeEventListener('mouseenter', handler);
       card.removeEventListener('focus', handler);
