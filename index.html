@@ -784,9 +784,13 @@
       transform: scaleX(0);
       transform-origin: left center;
     }
-    .problem-feed { display: grid; gap: 28px; }
+    .problem-feed { display: grid; width: 100%; min-width: 0; gap: 28px; }
     .problem-case {
       position: relative;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
       padding: 30px 30px 28px;
       border: 1px solid rgba(250,247,242,0.2);
       background: rgba(250,247,242,0.025);
@@ -1934,7 +1938,7 @@
       .integrity-guardrails { grid-template-columns: 1fr; gap: 10px; }
       .page-foreground { box-shadow: 0 18px 32px rgba(20,22,26,0.2); }
       .page-foreground::after { height: 5px; }
-      .curtain-pixels { display: none; }
+      .curtain-pixels { bottom: -30px; display: grid; height: 60px; grid-template-rows: repeat(6, 10px); }
       .closing-stage { position: relative; bottom: auto; }
       .closing-card { min-height: 100svh; }
       .closing-card::before { background-size: 32px 32px; }
@@ -2478,7 +2482,7 @@
           <h2 class="cta-title" data-pixelreveal>Prove the value before changing a <span>claim decision.</span></h2>
           <p class="cta-body" data-pixelreveal>Run a shadow pilot on 500–2,000 motor claims without changing approval decisions. Compare cycle time, recapture, contradiction yield and review effort against your current process.</p>
           <div class="cta-actions" data-pixelreveal data-reveal-delay="80">
-            <a class="cta-primary" href="mailto:info@merklit.com?subject=Merklit%20shadow%20pilot" aria-label="Request a Merklit shadow pilot">&gt; Request a pilot</a>
+            <a class="cta-primary" href="https://calendly.com/merklit-info/30min" target="_blank" rel="noopener noreferrer" aria-label="Request a Merklit shadow pilot">&gt; Request a pilot</a>
             <a class="cta-secondary" href="mailto:info@merklit.com?subject=Merklit%20conversation">Email us</a>
           </div>
         </div>
@@ -2827,22 +2831,32 @@ class Component extends DCLogic {
       bgBlocks.push(b); bgEl.appendChild(b);
     }
     const stage = document.getElementById('logo-stage');
+    const logoWidth = Math.min(420, Math.round(window.innerWidth * 0.72));
+    stage.replaceChildren();
+    stage.style.cssText = 'position:relative;flex:0 0 auto;width:' + logoWidth + 'px;margin:0 auto;line-height:0;';
     const img = new Image();
+    img.alt = 'merklit';
+    img.style.cssText = 'display:block;width:100%;height:auto;opacity:0;filter:brightness(0) invert(1);transform:scale(0.98);transition:opacity 0.18s steps(2),transform 0.38s steps(5);';
+    stage.appendChild(img);
     img.onload = () => {
-      const SW = 72, SH = Math.max(6, Math.round(SW * img.height / img.width));
-      const cv = document.createElement('canvas'); cv.width = SW; cv.height = SH;
-      const cx2 = cv.getContext('2d'); cx2.drawImage(img, 0, 0, SW, SH);
-      const data = cx2.getImageData(0, 0, SW, SH).data;
-      const cell = 7;
-      stage.style.cssText = 'position:relative;width:' + (SW * cell) + 'px;height:' + (SH * cell) + 'px;max-width:86vw;';
-      for (let y = 0; y < SH; y++) for (let x = 0; x < SW; x++) {
-        if (data[(y * SW + x) * 4 + 3] < 100) continue;
+      const cover = document.createElement('div');
+      cover.style.cssText = 'position:absolute;inset:0;display:grid;grid-template-columns:repeat(18,1fr);grid-template-rows:repeat(5,1fr);pointer-events:none;';
+      for (let i = 0; i < 90; i++) {
         const b = document.createElement('div');
-        const dx = (Math.random() - 0.5) * 560, dy = (Math.random() - 0.5) * 420;
-        b.style.cssText = 'position:absolute;width:' + cell + 'px;height:' + cell + 'px;background:#FAF7F2;left:' + (x * cell) + 'px;top:' + (y * cell) + 'px;opacity:0;transform:translate(' + dx + 'px,' + dy + 'px);transition:transform 0.75s steps(6),opacity 0.35s steps(3);transition-delay:' + (Math.random() * 0.65).toFixed(2) + 's;';
-        stage.appendChild(b);
-        requestAnimationFrame(() => requestAnimationFrame(() => { b.style.opacity = '1'; b.style.transform = 'translate(0,0)'; }));
+        b.style.cssText = 'background:#14161A;opacity:1;transition:opacity 0.3s steps(3);transition-delay:' + ((i * 47) % 520) + 'ms;';
+        cover.appendChild(b);
       }
+      stage.appendChild(cover);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+        Array.from(cover.children).forEach((block) => { block.style.opacity = '0'; });
+      }));
+      setTimeout(() => cover.remove(), 1050);
+    };
+    img.onerror = () => {
+      stage.textContent = 'merklit';
+      stage.style.cssText += "color:#FAF7F2;font-family:'Silkscreen',monospace;font-size:34px;line-height:1;text-align:center;";
     };
     img.src = 'assets/logo.png';
     const start = performance.now(), DUR = 1600;
@@ -2926,7 +2940,8 @@ class Component extends DCLogic {
   _initCurtainPixels() {
     const edge = document.getElementById('curtain-pixels');
     if (!edge) return;
-    const cols = 40, rows = 6;
+    const cols = window.innerWidth <= 900 ? Math.max(16, Math.round(window.innerWidth / 20)) : 40;
+    const rows = 6;
     edge.replaceChildren();
     edge.style.setProperty('--curtain-cols', String(cols));
     this._curtainPixels = [];
@@ -2954,7 +2969,7 @@ class Component extends DCLogic {
     const vw = window.innerWidth;
     const nx = this._tx > -50 ? (this._tx / vw - 0.5) : 0;
     const ny = this._ty > -50 ? (this._ty / vh - 0.5) : 0;
-    if (this._curtainPixels && vw > 900) {
+    if (this._curtainPixels) {
       const foreground = document.getElementById('page-foreground');
       if (foreground) {
         const raw = Math.min(1, Math.max(0, (vh - foreground.getBoundingClientRect().bottom) / vh));
